@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<div id="uploadArea">
+    <button id="uploadBtn"></button>
+</div>
+<audio controls src="http://plonb42pd.bkt.clouddn.com/%E5%A4%A7%E5%8E%9F%E6%AB%BB%E5%AD%90%20-%20%E3%81%8A%E3%81%A9%E3%82%8B%E3%83%9D%E3%83%B3%E3%83%9D%E3%82%B3%E3%83%AA%E3%83%B3.mp3"></audio>
 <body>
-        <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script src="../node_modules/plupload/js/moxie.min.js"></script>
+    <script src="../node_modules/plupload/js/plupload.min.js"></script>
+    <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
 
     <script>
         var APP_ID = 'uOoe8gy62wkd6tKHrLplpWP0-gzGzoHsz';
         var APP_KEY = 'Mwa2hORlaoNEBmS1szxlnail';
 
         AV.init({
-        appId: APP_ID,
-        appKey: APP_KEY
+            appId: APP_ID,
+            appKey: APP_KEY
         });
 
-        var TestObject = AV.Object.extend('TestObject');
-        var testObject = new TestObject();
-        testObject.save({
-        words: 'Hello World!'
-        }).then(function(object) {
-        alert('LeanCloud Rocks!');
-        },()=>{
-            console.log('failed')
-        })
-    </script>
+        // var TestObject = AV.Object.extend('PlayList');
+        // var testObject = new TestObject();
+        // testObject.save({
+        //     name: "test",
+        //     cover  : "test",
+        //     creatorId: "test",
+        //     description:"test",
+        //     songs:['1','2']
+        // }).then(function(object) {
+        // alert('LeanCloud Rocks!');
+        // },()=>{
+        //     console.log('failed')
+        // })
+
+
 </body>
+
 </html>

@@ -14,6 +14,8 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "leancloud-storage": "^3.11.1"
+    "leancloud-storage": "^3.11.1",
+    "qiniu-js": "^1.0.24",
+    "plupload": "^2.3.2"
   }
 }

@@ -26,12 +26,11 @@ var server = http.createServer(function (request, response) {
         response.setHeader('Content-Type', 'text/json;charset=utf-8')
         response.setHeader('Access-Control-Allow-Origin', '*')
 
-        var config = JSON.parse(fs.readFileSync("./qiniu-key.json"))
+        let {accessKey, secretKey} = JSON.parse(fs.readFileSync("./qiniu-key.json"))
         
-        let {accessKey, secretKey} = config
-
         var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
-
+        
+        console.log(mac)
         var options = {
             scope: '163music',
           };

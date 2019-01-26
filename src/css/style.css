@@ -1,0 +1,35 @@
+*{padding: 0;margin: 0;}
+*{box-sizing: border-box;}
+*::before,*::after{box-sizing: border-box;}
+ul,li{list-style: none}
+a{color: inherit;text-decoration: none}
+input{font: inherit}
+
+/* layout */
+
+#controlPanel {display: flex;height: 100vh;}
+#controlPanel>.songList {width: 300px;background: #fff;}
+#controlPanel>.songDiscription {flex-grow: 1;background: #000;padding-left: 20px;}
+
+/* aside */
+
+.songList {display: flex;flex-direction: column;padding: 0px 0px 5px 5px;}
+.songList>.createSong { text-align: center;font-weight: bold;font-size: 16px;padding: 15px 0;background: #000;color: #fff;}
+.songList>.songListContainer {flex-grow: 1;}
+.songList>.songListContainer>ul{text-align: center;}
+.songList>.songListContainer>ul>li{padding: 10px 0;border-bottom: solid #000 1px;}
+.songList>.uploadContainer{ cursor: pointer;}
+.songList>.uploadContainer>#uploadArea {display: flex;}
+.songList>.uploadContainer>#uploadArea>#uploadBtn {display: flex;flex-direction: column;text-align: center;padding:20px;border-radius: 10px;border: 1px dashed #cccccc;width: 100%;}
+
+/* main */
+.songDiscription {display:flex;justify-content: center;}
+.songDiscription>form {display:flex;flex-direction: column;justify-content: center;}
+.songDiscription>form>label {background: #fff;padding: 30px 40px;}
+.songDiscription>form>label:last-child{display: flex;justify-content: flex-end;}
+.songDiscription>form>label>span {color: #000;}
+.songDiscription>form>label>input[type=text] {border: #000 solid 1px;padding: 5px}
+.songDiscription>form>label>input[type=button] {padding: 5px 20px;align-self: flex-end;background: #000;color: #fff;border: 0;}
+
+
+

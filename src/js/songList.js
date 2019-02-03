@@ -3,18 +3,27 @@
         el:'.songListContainer',
         template:`
         <ul>
-            <li class='active'>歌曲1</li>
-            <li>歌曲2</li>
-            <li>歌曲3</li>
-            <li>歌曲4</li>
-            <li>歌曲5</li>
         </ul>
         `,
         render(data){
+            let {songs} = data
             $(this.el).html(this.template)
+            $(this.el).find('ul').empty()
+            
+            songs.map((song)=>{
+                let domLi = $('<li></li>').text(song.name)
+                console.log(domLi)
+                $(this.el).find('ul').append(domLi)
+            })
+            
         }
     }
-    let model = {}
+    let model = {
+        data:{
+            songs:[]
+        },
+
+    }
     let controller = {
         init(view,model){
             this.view = view
@@ -22,6 +31,10 @@
             this.view.render(this.model.data)
             window.eventHub.on('upload',()=>{
                 this.deactive()
+            })
+            window.eventHub.on('create',(songData)=>{
+                this.model.data.songs.push(songData)
+                this.view.render(this.model.data)
             })
         },
         deactive(){

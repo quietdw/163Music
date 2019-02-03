@@ -33,8 +33,8 @@ input{font: inherit}
 .songDiscription>.songDiscriptionSubmitContainer>form>label:last-child{display: flex;justify-content: flex-end;}
 .songDiscription>.songDiscriptionSubmitContainer>form>label>span {color: #000;}
 .songDiscription>.songDiscriptionSubmitContainer>form>label>input[type=text] {border: #000 solid 1px;padding: 5px}
-.songDiscription>.songDiscriptionSubmitContainer>form>label>input[type=button] {padding: 5px 20px;align-self: flex-end;background: #000;color: #fff;border: 0;outline: none;cursor: pointer;border:#fff solid 1px;margin-bottom: 10px;}
-.songDiscription>.songDiscriptionSubmitContainer>form>label>input[type=button]:hover{background: #fff;color: #000;border: #000 solid 1px;}
+.songDiscription>.songDiscriptionSubmitContainer>form>label>input[type=submit] {padding: 5px 20px;align-self: flex-end;background: #000;color: #fff;border: 0;outline: none;cursor: pointer;border:#fff solid 1px;margin-bottom: 10px;}
+.songDiscription>.songDiscriptionSubmitContainer>form>label>input[type=submit]:hover{background: #fff;color: #000;border: #000 solid 1px;}
 
 
 

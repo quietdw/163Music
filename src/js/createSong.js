@@ -21,11 +21,10 @@
                 this.active()
             })
             window.eventHub.on('select',(data)=>{
+                 this.model.data = data
                 if(data.id){
-                    console.log(data)
                     this.deactive()
                 }
-                console.log(data.id)
             })
         },
         active(){

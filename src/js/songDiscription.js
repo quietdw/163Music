@@ -28,7 +28,7 @@
                 html = html.replace(`__${string}__`, data[string] || '')
             })
             $(this.el).html(html)
-            
+
         },
         reset(){
             this.render({})
@@ -66,6 +66,9 @@
             this.view.render()
             window.eventHub.on('upload',(data)=>{
                 this.reset(data)
+            })
+            window.eventHub.on('select',(data)=>{
+                this.view.render(data)
             })
         },
         reset(data){

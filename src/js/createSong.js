@@ -20,9 +20,19 @@
             window.eventHub.on('upload',(data)=>{
                 this.active()
             })
+            window.eventHub.on('select',(data)=>{
+                if(data.id){
+                    console.log(data)
+                    this.deactive()
+                }
+                console.log(data.id)
+            })
         },
         active(){
             $(this.view.el).addClass('active')
+        },
+        deactive(){
+            $(this.view.el).removeClass('active')
         }
     }
 

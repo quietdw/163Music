@@ -28,6 +28,7 @@
                 html = html.replace(`__${string}__`, data[string] || '')
             })
             $(this.el).html(html)
+            
         },
         reset(){
             this.render({})

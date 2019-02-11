@@ -3,7 +3,7 @@
         el:'.songDiscription',
         template:`
        <div class="songDiscriptionSubmitContainer">
-       <h2>新建歌曲</h2>
+       
        <form action="" method="post" id="songDiscriptionSubmit">
        <label for="">
            <span>歌名:</span>
@@ -28,7 +28,12 @@
                 html = html.replace(`__${string}__`, data[string] || '')
             })
             $(this.el).html(html)
-
+            if(data.id){
+                $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>编辑歌曲</h2>')
+                console.log('1')
+            }else{
+                $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>新建歌曲</h2>')
+            }
         },
         reset(){
             this.render({})

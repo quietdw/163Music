@@ -30,7 +30,6 @@
             $(this.el).html(html)
             if(data.id){
                 $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>编辑歌曲</h2>')
-                console.log('1')
             }else{
                 $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>新建歌曲</h2>')
             }
@@ -73,6 +72,9 @@
                 this.reset(data)
             })
             window.eventHub.on('select',(data)=>{
+                this.view.render(data)
+            })
+            window.eventHub.on('new', (data) => {
                 this.view.render(data)
             })
         },

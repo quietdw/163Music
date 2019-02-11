@@ -74,6 +74,9 @@
             window.eventHub.on('upload', () => {
                 this.deactive()
             })
+            window.eventHub.on('new', () => {
+                this.deactive()
+            })
             window.eventHub.on('create', (songData) => {
                 this.model.data.songs.push(songData)
                 this.view.render(this.model.data)

@@ -71,9 +71,6 @@
             })
         },
         bindEventHub() {
-            window.eventHub.on('upload', () => {
-                this.deactive()
-            })
             window.eventHub.on('new', () => {
                 this.deactive()
             })

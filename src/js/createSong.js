@@ -18,20 +18,20 @@
             this.view.render()
             this.active()
             this.bindEvents()
-            window.eventHub.on('upload',(data)=>{
+            window.eventHub.on('new',(data)=>{
                 this.active()
             })
             window.eventHub.on('select',(data)=>{
-                 this.model.data = data
-                if(data.id){
+                
+                
                     this.deactive()
-                }
+                
             })
         },
         bindEvents(){
             $(this.view.el).on('click',()=>{
-                this.active()
-                window.eventHub.emit('new',{})
+                
+                window.eventHub.emit('new',this.model.data)
             })
         },
         active(){

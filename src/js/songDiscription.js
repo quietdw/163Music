@@ -59,9 +59,22 @@
             }, () => {
                 console.log('failed')
             })
+        },
+        update(data){
+             // 第一个参数是 className，第二个参数是 objectId
+             let song = AV.Object.createWithoutData('Song', this.data.id);
+             // 修改属性
+             song.set('name', data.name);
+             song.set('singer', data.singer);
+             song.set('url', data.url);
+             // 保存到云端
+             
+             return song.save().then((response)=>{
+                Object.assign(this.data,data)
+                return response
+             });
         }
     }
-
     let controller = {
         init(view,model){
             this.view = view
@@ -69,7 +82,7 @@
             this.bindEvents()
             this.view.render()
             window.eventHub.on('select',(data)=>{
-                this.view.data = data
+                this.model.data = data
                 this.view.render(data)
             })
             window.eventHub.on('new', (data) => {
@@ -85,22 +98,42 @@
         reset(data){
             this.view.render(data)
         },
+        create(){
+            let data = {}
+            let needs = 'name singer url'.split(' ')
+            needs.map((string)=>{
+                data[string] =
+                 $(this.view.el).find(`[name="${string}"]`).val()
+            })
+            this.model.create(data).then(()=>{
+                this.view.reset()
+                //console.log(this.model.data)
+                data = JSON.parse(JSON.stringify(this.model.data))//深拷贝
+
+                window.eventHub.emit('create',data)
+            })
+        },
+        update(){
+            let data = {}//收集所填写的信息
+            let needs = 'name singer url'.split(' ')
+            needs.map((string)=>{
+                data[string] =
+                 $(this.view.el).find(`[name="${string}"]`).val()
+            })
+           return this.model.update(data)
+        },
         bindEvents(){
             $(this.view.el).on('submit','form',(e)=>{//事件委托，form可能还没渲染出来
                 e.preventDefault()
-                let data = {}
-                let needs = 'name singer url'.split(' ')
-                needs.map((string)=>{
-                    data[string] =
-                     $(this.view.el).find(`[name="${string}"]`).val()
-                })
-                this.model.create(data).then(()=>{
-                    this.view.reset()
-                    //console.log(this.model.data)
-                    data = JSON.parse(JSON.stringify(this.model.data))//深拷贝
-
-                    window.eventHub.emit('create',data)
-                })
+                if(this.model.data.id){
+                    this.update().then(()=>{
+                        alert('更改成功')
+                        window.eventHub.emit('update',JSON.parse(JSON.stringify(this.model.data)))
+                    })
+                }else{
+                    this.create()
+                }
+               
             })
         }
 

@@ -7,13 +7,16 @@
         `,
         render(data) {
             let {
-                songs
+                songs,//数组
+                selectedId
             } = data
             $(this.el).html(this.template)
             $(this.el).find('ul').empty()
             songs.map((song) => {
                 let domLi = $('<li></li>').text(song.name).attr('data-song-id', song.id)
-
+                if(selectedId===song.id){
+                    this.activeItem(domLi)
+                }
                 $(this.el).find('ul').append(domLi)
             })
 
@@ -26,7 +29,8 @@
     }
     let model = {
         data: {
-            songs: []
+            songs: [],
+            selectedId: undefined,
         },
         find() {
             var query = new AV.Query('Song');
@@ -79,10 +83,10 @@
                 this.view.render(this.model.data)
             })
             window.eventHub.on('update', (data) => {
-                console.log(data)
                for(let i=0;i<this.model.data.songs.length;i++){
                     if(this.model.data.songs[i].id===data.id){
                         Object.assign(model.data.songs[i],data)
+                        this.model.data.selectedId = data.id
                     }
 
                 }

@@ -86,12 +86,10 @@
                 this.view.render(data)
             })
             window.eventHub.on('new', (data) => {
-                
                 if(this.model.data.id){
                     this.model.data = {id:'',name:'',singer:'',url:''}
-                 }else{    
                     Object.assign(this.model.data,data)
-                }
+                 }
                 this.view.render(this.model.data)
             })
         },

@@ -22,15 +22,11 @@
                 this.active()
             })
             window.eventHub.on('select',(data)=>{
-                
-                
-                    this.deactive()
-                
+                this.deactive()
             })
         },
         bindEvents(){
             $(this.view.el).on('click',()=>{
-                
                 window.eventHub.emit('new',this.model.data)
             })
         },

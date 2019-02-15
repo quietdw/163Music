@@ -82,10 +82,9 @@
                 console.log(data)
                for(let i=0;i<this.model.data.songs.length;i++){
                     if(this.model.data.songs[i].id===data.id){
-                        console.log(data)
                         Object.assign(model.data.songs[i],data)
                     }
-                    
+
                 }
                 this.view.render(this.model.data)
             })

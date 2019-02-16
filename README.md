@@ -6,4 +6,4 @@
 node server.js 8888
 ```
 
-[管理界面预览](http://jiangnana.fun/163Music/src/admin.html)
+管理界面预览:127.0.0.1/src/admin.html

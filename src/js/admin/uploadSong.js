@@ -55,7 +55,7 @@
                         window.eventHub.emit('FileUploaded')
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response);
-                        var sourceLink = domain + "/" + encodeURIComponent(response.key);
+                        var sourceLink = '//'+domain + "/" + encodeURIComponent(response.key);
                         window.eventHub.emit('new',{
                             url:sourceLink,
                             name:response.key

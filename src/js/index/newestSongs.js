@@ -13,7 +13,7 @@
               </svg>
               ${song.singer}
             </p>
-            <a class="playButton" href="${song.url}">
+            <a class="playButton" href="song.html?id=${song.id}">
               <svg class="icon icon-play">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
               </svg>

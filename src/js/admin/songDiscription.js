@@ -90,6 +90,7 @@
                     this.model.data = {id:'',name:'',singer:'',url:''}
                     Object.assign(this.model.data,data)
                  }
+                 Object.assign(this.model.data,data)
                 this.view.render(this.model.data)
             })
         },

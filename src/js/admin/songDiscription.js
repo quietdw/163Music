@@ -17,12 +17,16 @@
            <span>外链:</span>
            <input type="text" name="url" id="" value="__url__">
        </label>
+       <label for="">
+           <span>封面:</span>
+           <input type="text" name="cover" id="" value="__cover__">
+       </label>
        <label for=""><input type="submit" value=保存></label>
    </form>
        </div>
         `,
         render(data={}){
-            let placeholders = ['name','singer','url','id']
+            let placeholders = ['name','singer','url','id','cover']
             let html = this.template
             placeholders.map((string)=>{
                 html = html.replace(`__${string}__`, data[string] || '')
@@ -44,7 +48,8 @@
             name:'',
             singer:'',
             url:'',
-            id:''
+            id:'',
+            cover:'',
         },
         create(data){
             let Song = AV.Object.extend('Song')
@@ -52,6 +57,7 @@
             song.set('name',data.name)
             song.set('singer',data.singer)
             song.set('url',data.url)
+            song.set('cover',data.cover)
             return song.save().then( (newSong)=> {
                 let {id,attributes} = newSong
                 //this.data = {id,...attributes}
@@ -67,6 +73,7 @@
              song.set('name', data.name);
              song.set('singer', data.singer);
              song.set('url', data.url);
+             song.set('cover', data.cover);
              // 保存到云端
              
              return song.save().then((response)=>{
@@ -87,7 +94,7 @@
             })
             window.eventHub.on('new', (data) => {
                 if(this.model.data.id){
-                    this.model.data = {id:'',name:'',singer:'',url:''}
+                    this.model.data = {id:'',name:'',singer:'',url:'',cover:''}
                     Object.assign(this.model.data,data)
                  }
                  Object.assign(this.model.data,data)
@@ -99,7 +106,7 @@
         },
         create(){
             let data = {}
-            let needs = 'name singer url'.split(' ')
+            let needs = 'name singer url cover'.split(' ')
             needs.map((string)=>{
                 data[string] =
                  $(this.view.el).find(`[name="${string}"]`).val()
@@ -114,7 +121,7 @@
         },
         update(){
             let data = {}//收集所填写的信息
-            let needs = 'name singer url'.split(' ')
+            let needs = 'name singer url cover'.split(' ')
             needs.map((string)=>{
                 data[string] =
                  $(this.view.el).find(`[name="${string}"]`).val()

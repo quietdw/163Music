@@ -3,11 +3,14 @@
         el:'#app',
         template:``,
         render(data){
-           $(this.el).find('audio').attr('src',data.url)
+           $(this.el).find('audio').attr('src',data.url).get(0).onended = ()=>{
+               this.pause()
+           }
            $(this.el).find('.cover').attr('src',data.cover)
            $(this.el).find('.songName').html(data.name)
            $(this.el).find('.singer').html(data.singer)
            $(this.el).find('.backgroundBlur').css('background-image',`url(${data.cover})`)
+           this.renderLyric(data)
         },
         play(){
             $(this.el).find('audio')[0].play()
@@ -21,7 +24,22 @@
             $(this.el).find('.pointer').removeClass('playing')
             $(this.el).find('.icon-wrapper').removeClass('hide')
             
+        },
+        renderLyric(data){
+            let lyric = data.lyric
+            let linesAndTime = lyric.split('\n')
+            //let reg = /\[([\d:.]+)\](.+)/
+            linesAndTime.map((line)=>{
+                matches =  line.match(/\[([\d:.]+)\](.+)/)
+                let oDiv 
+                if(matches){
+                     oDiv = $(`<div>${matches[2]}</div>`)
+                }
+                $(this.el).find('.lines').append(oDiv)
+            })
+            
         }
+
 
     }
     let model = {

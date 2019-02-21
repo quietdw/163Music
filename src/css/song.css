@@ -50,8 +50,11 @@
 .song-description .lines{
 	transition: transform 0.3s;
 }
+.song-description .lines div.active{
+	color:#D43B32;
+}
 .song-description .lyric{
-	height: 72px;
+	height: 96px;
 	overflow: hidden;
 }
 .song-description p.active{

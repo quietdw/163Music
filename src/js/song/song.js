@@ -3,9 +3,12 @@
         el:'#app',
         template:``,
         render(data){
-           $(this.el).find('audio').attr('src',data.url).get(0).onended = ()=>{
-               this.pause()
-           }
+            let audio = $(this.el).find('audio').get(0)
+            audio.onended = ()=>{
+                this.pause()
+            }
+            
+           $(this.el).find('audio').attr('src',data.url)
            $(this.el).find('.cover').attr('src',data.cover)
            $(this.el).find('.songName').html(data.name)
            $(this.el).find('.singer').html(data.singer)
@@ -17,6 +20,9 @@
             $(this.el).find('.icon-wrapper').addClass('hide')
             $(this.el).find('.disc-container').addClass('playing')
             $(this.el).find('.pointer').addClass('playing')
+            $(this.el).find('audio').get(0).ontimeupdate = ()=>{
+                this.showLyric($(this.el).find('audio').get(0).currentTime)
+            }
         },
         pause(){
             $(this.el).find('audio')[0].pause()
@@ -26,18 +32,46 @@
             
         },
         renderLyric(data){
+            let audio = $(this.el).find('audio').get(0)
             let lyric = data.lyric
             let linesAndTime = lyric.split('\n')
             //let reg = /\[([\d:.]+)\](.+)/
             linesAndTime.map((line)=>{
                 matches =  line.match(/\[([\d:.]+)\](.+)/)
-                let oDiv 
+                let oDiv = null
+               
                 if(matches){
-                     oDiv = $(`<div>${matches[2]}</div>`)
+                    let ms = matches[1].split(':')
+                    let seconds = parseInt(ms[0],10)*60+parseFloat(ms[1])
+                    oDiv = $(`<div>${matches[2]}</div>`).attr('data-timeline',seconds)                  
                 }
+                
                 $(this.el).find('.lines').append(oDiv)
             })
             
+        },
+        showLyric(time){
+
+            //console.log($(this.el).find('.lines>div').length)
+            let  lines = $(this.el).find('.lines>div')
+            let p
+            for(let i=0;i<lines.length;i++){
+                if(time>=lines.eq(lines.length-1).attr('data-timeline')){
+                    p=lines.eq(lines.length-1)
+                    //lines.eq(i).addClass('active').siblings('.active').removeClass('active')
+                }
+                if(time>=lines.eq(i).attr('data-timeline') && time<lines.eq(i+1).attr('data-timeline')){
+                    p=lines.eq(i)
+                   
+                }  
+            }
+            
+
+            if(p){
+                p.addClass('active').siblings('.active').removeClass('active')
+            let height = p.get(0).getBoundingClientRect().top-$(this.el).find('.lines').get(0).getBoundingClientRect().top
+            $(this.el).find('.lines').css('transform',`translateY(-${height-18}px)`)
+            }
         }
 
 

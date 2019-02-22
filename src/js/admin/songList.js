@@ -42,8 +42,24 @@
             songs: [],
             selectedId: undefined,
         },
-        find() {
-            var query = new AV.Query('Song');
+        find(listId) {
+           if (listId){
+               console.log(listId);
+               
+            let recLists = AV.Object.createWithoutData('RecommendedSongsLists', listId);
+            let query = new AV.Query('Song');
+            query.equalTo('dependent', recLists);
+            return  query.find().then( (songs)=> {
+                this.data.songs = songs.map((song) => {
+                    return {
+                        id: song.id,
+                        ...song.attributes
+                    }
+                });
+                return songs
+            });
+           }else{
+            let query = new AV.Query('Song');
             return query.find().then((songs) => {
                 this.data.songs = songs.map((song) => {
                     return {
@@ -53,6 +69,7 @@
                 });
                 return songs
             });
+           }
 
 
         },
@@ -65,7 +82,7 @@
             this.view.render(this.model.data)
             this.bindEvents()
             this.bindEventHub()
-            this.getAllSongs()
+            this.getAllSongs(this.getId())
         },
         deactive() {
             $(this.view.el).find('.active').removeClass('active')
@@ -103,11 +120,29 @@
                 this.view.render(this.model.data)
             })
         },
-        getAllSongs() {
-            return this.model.find().then(() => {
+        getAllSongs(id) {
+            return this.model.find(id).then(() => {
                 this.view.render(this.model.data)
             })
-        }
+        },
+        getId(){
+            let search = window.location.search
+            if(search.indexOf('?')===0){
+                 search = search.substring(1)
+            }
+            let array = search.split('&').filter((x) => x)
+            let id = ''
+            array.map((info) => {
+                let kv = info.split('=')
+                let key = kv[0]
+                let value = kv[1]
+                if (key === 'id') {
+                    id = value
+                }
+            })
+            
+            return id
+        },
     }
 
     controller.init.call(controller, view, model)

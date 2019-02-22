@@ -136,8 +136,6 @@
            return this.model.update(data)
         },
         bindEvents(){
-            console.log(this.view.el);
-            
             $(this.view.el).on('submit','form',(e)=>{//事件委托，form可能还没渲染出来
                 e.preventDefault()
                 if(this.model.data.id){

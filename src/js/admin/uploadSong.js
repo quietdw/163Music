@@ -4,7 +4,7 @@
         template:`
         <div id="uploadArea">
             <span id="uploadBtn">
-                <span>点击/拖拽上传 </span>
+                <span>点击此处或拖拽上传 </span>
                 <span>文件大小不能超过20mb</span>
             </span>
         </div>
@@ -52,6 +52,9 @@
                         // 每个文件上传时，处理相关的事情
                     },
                     'FileUploaded': function (up, file, info) {
+                        
+                        
+                        
                         window.eventHub.emit('FileUploaded')
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response);
@@ -61,7 +64,7 @@
                             name:response.key
                         })
 
-
+                        alert('上传成功');
                     },
                     'Error': function (up, err, errTip) {
                         //上传出错时，处理相关的事情

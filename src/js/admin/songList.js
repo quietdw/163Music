@@ -12,8 +12,18 @@
             } = data
             $(this.el).html(this.template)
             $(this.el).find('ul').empty()
-            songs.map((song) => {
-                let domLi = $('<li></li>').text(song.name).attr('data-song-id', song.id)
+            songs.map((song,key) => {
+                let domSpan1 = $('<span></span>').text(key+1)
+                let domSpan2 = $('<span></span>').text(song.name).attr('data-song-id', song.id)
+                let img = $('<img>').attr('src', song.cover)
+                let domLi = $('<li></li>')
+                if(key%2){
+                    domLi.addClass('gray')
+                }
+                domLi.append(domSpan1)
+                domLi.append(img)
+                domLi.append(domSpan2)
+
                 if(selectedId===song.id){
                     this.activeItem(domLi)
                 }
@@ -63,14 +73,14 @@
         bindEvents() {
             $(this.view.el).on('click', 'li', (e) => {
                 this.view.activeItem(e.currentTarget)
-                let songId = e.currentTarget.getAttribute('data-song-id')
+                let songId =$( e.currentTarget).find('span')[1].getAttribute('data-song-id')
                 songData = {}
                 for(let i=0;i<this.model.data.songs.length;i++){
                     if(this.model.data.songs[i].id === songId){
                         songData=this.model.data.songs[i]
                         break
                     }
-                }
+                }           
                 window.eventHub.emit('select',JSON.parse(JSON.stringify(songData)))
             })
         },

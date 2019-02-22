@@ -36,11 +36,11 @@
                 html = html.replace(`__${string}__`, data[string] || '')
             })
             $(this.el).html(html)
-            if(data.id){
-                $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>编辑歌曲</h2>')
-            }else{
-                $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>新建歌曲</h2>')
-            }
+            // if(data.id){
+            //     $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>编辑歌曲</h2>')
+            // }else{
+            //     $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>新建歌曲</h2>')
+            // }
         },
         reset(){
             this.render({})
@@ -96,8 +96,6 @@
             this.bindEvents()
             this.view.render()
             window.eventHub.on('select',(data)=>{
-                console.log(1)
-                console.log(data)
                 this.model.data = data
                 this.view.render(data)
             })
@@ -138,6 +136,8 @@
            return this.model.update(data)
         },
         bindEvents(){
+            console.log(this.view.el);
+            
             $(this.view.el).on('submit','form',(e)=>{//事件委托，form可能还没渲染出来
                 e.preventDefault()
                 if(this.model.data.id){

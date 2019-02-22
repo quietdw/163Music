@@ -30,7 +30,7 @@
                 runtimes: 'html5', // 上传模式，依次退化
                 browse_button: this.view.find(uploadBtn), // 上传选择的点选按钮，必需
                 uptoken_url: 'http://127.0.0.1:8888/uptoken', // Ajax请求uptoken的Url，强烈建议设置（服务端提供）
-                domain: 'plonb42pd.bkt.clouddn.com', // bucket域名，下载资源时用到，必需 plonb42pd.bkt.clouddn.com
+                domain: 'pnb99b2pv.bkt.clouddn.com', // bucket域名，下载资源时用到，必需 
                 container: this.view.find(uploadArea), // 上传区域DOM ID，默认是browser_button的父元素
                 max_file_size: '20mb', // 最大文件体积限制
                 //max_retries: 3,                     // 上传失败最大重试次数

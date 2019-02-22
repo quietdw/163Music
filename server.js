@@ -32,7 +32,7 @@ var server = http.createServer(function (request, response) {
         
         console.log(mac)
         var options = {
-            scope: '163music',
+            scope: '163music01',
           };
           var putPolicy = new qiniu.rs.PutPolicy(options);
           var uploadToken=putPolicy.uploadToken(mac);

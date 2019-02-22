@@ -103,7 +103,7 @@
             this.view = view
             this.model = model
             this.model.fetch(this.getId()).then(()=>{
-                this.view.render(this.model.data.song)
+                this.view.render(this.model.data.song)  
             })
             this.bindEvents()
             //this.view.play()

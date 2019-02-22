@@ -51,7 +51,7 @@
 	transition: transform 0.3s;
 }
 .song-description .lines div.active{
-	color:#D43B32;
+	color:#FFF;
 }
 .song-description .lyric{
 	height: 96px;

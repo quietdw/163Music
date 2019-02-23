@@ -1,2 +1,4 @@
 /node_modules/*
 /qiniu-key.json
+package.json
+package-lock.json

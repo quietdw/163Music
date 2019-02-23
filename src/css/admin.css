@@ -36,7 +36,7 @@ body{background: #f5f7fc;font-family: "Lato","PingFang SC","Microsoft YaHei",san
 /* songDiscription */
 .songDiscription>.songDiscriptionSubmitContainer>h2{text-align: center;padding: 15px 0;color: #C20C0C;}
 .songDiscription>.songDiscriptionSubmitContainer>form {display:flex;justify-content: center;flex-direction: column;}
-.songDiscription>.songDiscriptionSubmitContainer>form>label {;padding: 10px;}
+.songDiscription>.songDiscriptionSubmitContainer>form>label {padding: 10px;}
 .songDiscription>.songDiscriptionSubmitContainer>form>label:nth-child(5){align-self: flex-start;}
 .songDiscription>.songDiscriptionSubmitContainer>form>label:last-child{display: flex;justify-content: flex-end;}
 .songDiscription>.songDiscriptionSubmitContainer>form>label>span {color: #000;}

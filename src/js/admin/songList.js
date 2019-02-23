@@ -18,7 +18,7 @@
                 let img = $('<img>').attr('src', song.cover)
                 let domLi = $('<li></li>')
                 if(key%2){
-                    domLi.addClass('gray')
+                    domLi.addClass('white')
                 }
                 domLi.append(domSpan1)
                 domLi.append(img)

@@ -43,23 +43,10 @@
             recsonglist.set('cover',data.cover)
             recsonglist.set('summary',data.summary)
 
-            var song = new AV.Object('Song');// 广州
-     
-        //     song.set('name', '测试歌曲');
-        //     //var recsonglist = new AV.Object('RecommendedSongsLists');// 广东
-        //     var recsonglist1 = new AV.Object.createWithoutData('RecommendedSongsLists','5c700e5da91c930054d37a26');// 广东
-        //     //recsonglist.set('name', '广东');
-        //     song.set('dependent', recsonglist1);// 为广州设置 dependent 属性为广东
-        //    // return 
-        //    song.save().then(function (song) {
-        //         console.log(song.id);
-        //     });
-
             return recsonglist.save().then( (recsonglist)=> {
                 let {id,attributes} = recsonglist
                 //this.data = {id,...attributes}
                 Object.assign(this.data,{id,...attributes}) 
-                console.log(this.data)
             }, () => {
                 console.log('failed')
             })
@@ -71,6 +58,24 @@
             this.model = model
             this.view.render()
             this.bindEvents()
+        },
+        getId(){
+            let search = window.location.search
+            if(search.indexOf('?')===0){
+                 search = search.substring(1)
+            }
+            let array = search.split('&').filter((x) => x)
+            let id = ''
+            array.map((info) => {
+                let kv = info.split('=')
+                let key = kv[0]
+                let value = kv[1]
+                if (key === 'id') {
+                    id = value
+                }
+            })
+            
+            return id
         },
         bindEvents(){
             $(this.view.el).on('submit','form',(e)=>{

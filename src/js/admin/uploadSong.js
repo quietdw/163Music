@@ -51,10 +51,7 @@
                         window.eventHub.emit('UploadProgress')
                         // 每个文件上传时，处理相关的事情
                     },
-                    'FileUploaded': function (up, file, info) {
-                        
-                        
-                        
+                    'FileUploaded':  (up, file, info)=> {
                         window.eventHub.emit('FileUploaded')
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response);

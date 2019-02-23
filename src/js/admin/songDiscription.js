@@ -57,20 +57,38 @@
             lyric:'',
         },
         create(data){
-            let Song = AV.Object.extend('Song')
-            let song = new Song()
-            song.set('name',data.name)
-            song.set('singer',data.singer)
-            song.set('url',data.url)
-            song.set('cover',data.cover)
-            song.set('lyric',data.lyric)
-            return song.save().then( (newSong)=> {
-                let {id,attributes} = newSong
-                //this.data = {id,...attributes}
-                Object.assign(this.data,{id,...attributes}) 
-            }, () => {
-                console.log('failed')
-            })
+            if(this.getId()){
+                var song = new AV.Object('Song'); 
+                song.set('name',data.name)
+                song.set('singer',data.singer)
+                song.set('url',data.url)
+                song.set('cover',data.cover)
+                song.set('lyric',data.lyric)
+                var recsonglist = new AV.Object.createWithoutData('RecommendedSongsLists', this.getId());
+                song.set('dependent', recsonglist); 
+                 return song.save().then( (newSong)=> {
+                    let {id,attributes} = newSong
+                    //this.data = {id,...attributes}
+                    Object.assign(this.data,{id,...attributes}) 
+                }, () => {
+                    console.log('failed')
+                });
+            }else{
+                let Song = AV.Object.extend('Song')
+                let song = new Song()
+                song.set('name',data.name)
+                song.set('singer',data.singer)
+                song.set('url',data.url)
+                song.set('cover',data.cover)
+                song.set('lyric',data.lyric)
+                return song.save().then( (newSong)=> {
+                    let {id,attributes} = newSong
+                    //this.data = {id,...attributes}
+                    Object.assign(this.data,{id,...attributes}) 
+                }, () => {
+                    console.log('failed')
+                })
+            }
         },
         update(data){
              // 第一个参数是 className，第二个参数是 objectId
@@ -87,7 +105,25 @@
                 Object.assign(this.data,data)
                 return response
              });
-        }
+        },
+        getId(){
+            let search = window.location.search
+            if(search.indexOf('?')===0){
+                 search = search.substring(1)
+            }
+            let array = search.split('&').filter((x) => x)
+            let id = ''
+            array.map((info) => {
+                let kv = info.split('=')
+                let key = kv[0]
+                let value = kv[1]
+                if (key === 'id') {
+                    id = value
+                }
+            })
+            
+            return id
+        },
     }
     let controller = {
         init(view,model){
@@ -112,7 +148,8 @@
             this.view.render(data)
         },
         create(){
-            let data = {}
+            let data = {
+            }
             let needs = 'name singer url cover lyric'.split(' ')
             needs.map((string)=>{
                 data[string] =
@@ -122,7 +159,7 @@
                 this.view.reset()
                 //console.log(this.model.data)
                 data = JSON.parse(JSON.stringify(this.model.data))//深拷贝
-
+               
                 window.eventHub.emit('create',data)
             })
         },
@@ -148,7 +185,7 @@
                 }
                
             })
-        }
+        },
 
     }
 

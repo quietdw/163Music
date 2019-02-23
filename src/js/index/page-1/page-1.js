@@ -1,66 +1,63 @@
 {
     let view = {
-        el:'.page-1',
+        el:'.playlists',
+        template:`
+        <h2 class="sectionTitle">推荐歌单</h2>
+        <ol class="songs">
+
+        </ol>
+        `,
         show(){
-            $(this.el).addClass('active')  
+            $(this.el).parent('.page-1').addClass('active')  
         },
         hide(){
-            $(this.el).removeClass('active')  
+            $(this.el).parent('.page-1').removeClass('active')  
         },
-        render(){
+        render(data) {
+            
+            
+            let {lists} = data
+             $(this.el).html(this.template)
+             $(this.el).find('ol').empty()
+            lists.map((list,key) => {
+                let domdiv = $('<div></div>').attr('class', 'cover')
+                let domimg = $('<img>').attr('src', list.cover)
+                domdiv.append(domimg)
+                let domp = $('<p></p>').text(list.name)
+                let a = $('<a></a>').attr('href', `recList.html?id=${list.id}`)
+                let domLi = $('<li></li>')
+                a.append(domdiv)
+                a.append(domp)
+                domLi.append(a)
+                $(this.el).find('ol').append(domLi)
+            })
 
-        }
+        },
     }
     let model = {
         data:{
-            name:'',
-            id:'',
-            cover:'',
-            summary:'',
+            lists:[]
         },
-        create(data){
-            let Song = AV.Object.extend('RecommendedSongsLists')
-            let song = new Song()
-            song.set('name',data.name)
-            song.set('id',data.id)
-            song.set('summary',data.summary)
-            song.set('cover',data.cover)
-            return song.save().then( (newSong)=> {
-                let {id,attributes} = newSong
-                //this.data = {id,...attributes}
-                Object.assign(this.data,{id,...attributes}) 
-            }, () => {
-                console.log('failed')
-            })
-        },
-        // update(data){
-        //      // 第一个参数是 className，第二个参数是 objectId
-        //      let song = AV.Object.createWithoutData('Song', this.data.id);
-        //      // 修改属性
-        //      song.set('name', data.name);
-        //      song.set('singer', data.singer);
-        //      song.set('url', data.url);
-        //      song.set('cover', data.cover);
-        //      song.set('lyric', data.lyric);
-        //      // 保存到云端
-             
-        //      return song.save().then((response)=>{
-        //         Object.assign(this.data,data)
-        //         return response
-        //      });
-        // }
+        fetch(){
+            let query = new AV.Query('RecommendedSongsLists');
+            return query.find().then((recLists) => {
+                this.data.lists = recLists.map((recList) => {
+                    return {
+                        id: recList.id,
+                        ...recList.attributes
+                    }
+                });
+                return recLists
+            });
+        }
     }
     let controller = {
         init(view,model){
             this.view = view
             this.model= model
+            //this.view.render()
+            this.getAllRecLists()
             this.bindEventHub()
-            this.model.create({
-                name:'推荐歌单1',
-                id:'1',
-                cover:'1',
-                summary:'111',
-            })
         },
         bindEventHub(){
             window.eventHub.on('selectTab',(tabName)=>{
@@ -69,6 +66,11 @@
                 }else{
                     this.view.hide()
                 }
+            })
+        },
+        getAllRecLists(){
+            this.model.fetch().then(()=>{
+                this.view.render(this.model.data)
             })
         }
     }

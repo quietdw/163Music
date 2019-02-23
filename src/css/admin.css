@@ -21,8 +21,8 @@ body{background: #f5f7fc;font-family: "Lato","PingFang SC","Microsoft YaHei",san
 
 .songList>.songListContainer {flex-grow: 1;border-radius: 10px;margin-right: 10px;background: #fff;}
 .songList>.songListContainer>ul{padding: 10px;}
-.songList>.songListContainer>ul>li{padding: 10px 0px 10px 10px;;background: #e8e8e8;border-radius: 3px;}
-.songList>.songListContainer>ul>li.gray{background: #f4f4f4;}
+.songList>.songListContainer>ul>li{padding: 10px 0px 10px 10px;;background: #f4f4f4;border-radius: 3px;}
+.songList>.songListContainer>ul>li.white{background: #fff;}
 .songList>.songListContainer>ul>li>span{padding: 0 10px;}
 .songList>.songListContainer>ul>li>img{width: 21px;height: 21px;vertical-align: top;}
 .songList>.songListContainer>ul>li.active{color:#C20C0C;}

@@ -4,7 +4,7 @@
 @keyframes circle{0% {transform: rotate(0deg); } 100% {transform: rotate(360deg); } }
 
 .page{display: flex; flex-direction: column; height: 100vh;}
-.backgroundBlur{display: flex; flex-direction: column; height: 100vh;width: 100%;;background-size: cover;position: absolute;z-index: -1;background-position: center;filter:blur(5px)}
+.backgroundBlur{display: flex; flex-direction: column; height: 100vh;width: 100%;position: absolute;z-index: -1;background-repeat: no-repeat;background-size: cover;background-position: 50%;transform: scale(1.5);filter: blur(20px)}
 
 .disc-container{position: relative; }
 .disc-container .icon-wrapper{position: absolute; z-index: 1; display: flex; 

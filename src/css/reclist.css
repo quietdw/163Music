@@ -1,0 +1,14 @@
+/* layout */
+
+.list-head-container{position: relative;overflow: hidden;}
+.list-head-container>.list-head-innercontainer{padding: 30px 10px 30px 15px;}
+.list-head-background{position: absolute;width: 100%;height: 100%;left: 0;top: 0;z-index: -1;background-image: url(https://p1.music.126.net/_FCjUngRwE2Jm4w_cmrciQ==/109951163877926335.webp?imageView&thumbnail=378x0&quality=75&tostatic=0&type=webp);filter: blur(20px);background-repeat: no-repeat;background-size: cover;background-position: 50%;transform: scale(1.5);}
+.list-head{display: flex}
+.list-head>.list-cover{width: 36%;position: relative;}
+.list-head>.list-cover>img{width: 100%;vertical-align: top;}
+.list-head>.list-cover>span{position: absolute;left: 0;display: block;top: 10px;background: rgba(217,48,48,.8);color: #fff;padding: 0 8px;font-size: 9px;border-top-right-radius: 18px;border-bottom-right-radius: 18px;line-height: 18px; }
+.list-head>.list-name{margin-left: 16px;flex: 1 1 auto;color: #fff;}
+.list-head>.list-name>h2{font-size: 17px;padding-top: 1px;line-height: 1.3;padding: 10px 0;}
+.list-head>.list-name>.list-author{margin-top: 20px;display: flex;}
+.list-head>.list-name>.list-author>svg{width: 30px;height: 30px;background: #fff;border-radius: 50%;}
+.list-head>.list-name>.list-author>span{line-height: 30px;margin-left: 5px;color: hsla(0,0%,100%,.7);font-size: 14px;}

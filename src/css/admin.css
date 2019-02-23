@@ -1,9 +1,3 @@
-*{padding: 0;margin: 0;}
-*{box-sizing: border-box;}
-*::before,*::after{box-sizing: border-box;}
-ul,li{list-style: none}
-a{color: inherit;text-decoration: none}
-input{font: inherit}
 body{background: #f5f7fc;font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;}
 
 /* layout */

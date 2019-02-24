@@ -21,9 +21,7 @@
                 let p =$('<p></p>').text(`专辑简介：${reclist.summary}`)
                 let domLi = $('<li></li>')
                 let div = $('<div></div>')
-                if(key%2){
-                    domLi.addClass('gray')
-                }
+
                 domLi.append(domSpan1)
                 domLi.append(img)
                 div.append(domSpan2)
@@ -36,6 +34,9 @@
                 }
                 $(this.el).find('ul').append(domLi)
             })
+        },
+        activeItem(e){
+            $(e).addClass('active').siblings('.active').removeClass('active')
         }
     }
     let model = {
@@ -64,12 +65,27 @@
             this.view = view
             this.model = model
             this.getAllLists()
+            this.bindEvents()
         },
         getAllLists() {
             return this.model.find().then(() => {
                 this.view.render(this.model.data)
             })
-        }
+        },
+        bindEvents() {
+            $(this.view.el).on('click', 'li', (e) => {
+                 this.view.activeItem(e.currentTarget)
+                 let listId =$( e.currentTarget).find('span')[1].getAttribute('data-reclist-id')
+                 listData = {}
+                for(let i=0;i<this.model.data.reclists.length;i++){
+                    if(this.model.data.reclists[i].id === listId){
+                        listData=this.model.data.reclists[i]
+                        break
+                    }
+                }          
+                window.eventHub.emit('select',JSON.parse(JSON.stringify(listData)))
+            })
+        },
     }
     controller.init(view,model)
 }

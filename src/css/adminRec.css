@@ -15,6 +15,7 @@ body{background: #f5f7fc;font-family: "Lato","PingFang SC","Microsoft YaHei",san
 .recSongLists{flex: 1 ;border-radius: 5px;background: #fff;}
 .recSongLists>ul{border-bottom: #f4f4f4 solid 1px;}
 .recSongLists>ul>li{position: relative;padding:10px 4px;display: flex;}
+.recSongLists>ul>li.active{border-right: #C20C0C solid 5px}
 .recSongLists>ul>li:nth-child(odd){background: #f4f4f4;}
 .recSongLists>ul>li>span{position: absolute;color: #fff;width: 20px;height: 20px;background: #C20C0C;border-radius: 50%;text-align: center;line-height: 16px;margin: 4px 0 0 4px;padding: 2px}
 .recSongLists>ul>li>img{width: 100px;height: 100px;margin-left: 28px;}

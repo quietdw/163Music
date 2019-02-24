@@ -45,11 +45,24 @@
 
             return recsonglist.save().then( (recsonglist)=> {
                 let {id,attributes} = recsonglist
+                
                 //this.data = {id,...attributes}
                 Object.assign(this.data,{id,...attributes}) 
             }, () => {
                 console.log('failed')
             })
+        },
+        update(data){
+console.log(data);
+
+            // 第一个参数是 className，第二个参数是 objectId
+            let query = AV.Object.createWithoutData('RecommendedSongsLists', data.id);
+            // 修改属性
+            query.set('name', data.name);
+            query.set('cover', data.cover);
+            query.set('summary', data.summary);
+            // 保存到云端
+            return query.save()
         }
     }
     let controller= {
@@ -58,6 +71,10 @@
             this.model = model
             this.view.render()
             this.bindEvents()
+            window.eventHub.on('select',(data)=>{
+                this.view.render(data)
+                this.model.data = data
+            })
         },
         getId(){
             let search = window.location.search
@@ -80,7 +97,12 @@
         bindEvents(){
             $(this.view.el).on('submit','form',(e)=>{
                 e.preventDefault()
-                this.create()
+                if(this.model.data.id){
+                    this.update(this.model.data)
+                }else{
+                    this.create()
+                }
+                
             })
         },
         create(){
@@ -93,9 +115,19 @@
             
             this.model.create(data).then(()=>{
                 this.view.reset()
-                data = JSON.parse(JSON.stringify(this.model.data))//深拷贝
-                window.eventHub.emit('new',data)
+                // data = JSON.parse(JSON.stringify(this.model.data))//深拷贝
+                // window.eventHub.emit('new',data)
             })
+        },
+        update(){
+            let data = {}//收集所填写的信息
+            let needs = 'name cover summary'.split(' ')
+            needs.map((string)=>{
+                data[string] =
+                 $(this.view.el).find(`[name="${string}"]`).val()
+            })
+            Object.assign(this.model.data,data)
+           return this.model.update(this.model.data)
         },
         reset(){
 

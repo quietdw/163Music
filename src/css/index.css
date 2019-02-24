@@ -147,7 +147,7 @@ body{
     margin-left: 10px;
     padding-bottom: 6px;
     padding-top: 5px;
-    border-bottom: 1px solid #E2E2E3;
+    border-bottom: 1px solid rgb(243,243,243);
   }
   section.songs > .list .playButton{
     position: absolute;

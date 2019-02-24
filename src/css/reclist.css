@@ -1,14 +1,53 @@
 body, button, input, keygen, legend, select, textarea{font: 14px/1.5 Helvetica,sans-serif;color: #333;outline: 0;}
-
+body{position: relative;}
+#recList {background: #f8f8f8}
+/* cover name author */
 .list-head-container{position: relative;overflow: hidden;}
 .list-head-container>.list-head-innercontainer{padding: 30px 10px 30px 15px;}
-.list-head-background{position: absolute;width: 100%;height: 100%;left: 0;top: 0;z-index: -1;background-image: url(https://p1.music.126.net/_FCjUngRwE2Jm4w_cmrciQ==/109951163877926335.webp?imageView&thumbnail=378x0&quality=75&tostatic=0&type=webp);filter: blur(20px);background-repeat: no-repeat;background-size: cover;background-position: 50%;transform: scale(1.5);}
-.list-head{display: flex}
-.list-head>.list-cover{width: 36%;position: relative;}
+.list-head-container>.list-head-innercontainer>.list-head-background{position: absolute;width: 100%;height: 100%;left: 0;top: 0;z-index:0;background-image: url(https://p1.music.126.net/_FCjUngRwE2Jm4w_cmrciQ==/109951163877926335.webp?imageView&thumbnail=378x0&quality=75&tostatic=0&type=webp);filter: blur(20px);background-repeat: no-repeat;background-size: cover;background-position: 50%;transform: scale(1.5);}
+.list-head{display: flex;position: relative;z-index: 1;}
+.list-head>.list-cover{width: 36%;position: relative;max-width: 150px;;}
 .list-head>.list-cover>img{width: 100%;vertical-align: top;}
 .list-head>.list-cover>span{position: absolute;left: 0;display: block;top: 10px;background: rgba(217,48,48,.8);color: #fff;padding: 0 8px;font-size: 9px;border-top-right-radius: 17px;border-bottom-right-radius: 17px;line-height: 17px; }
 .list-head>.list-name{margin-left: 16px;flex: 1 1 auto;color: #fff;}
 .list-head>.list-name>h2{font-size: 17px;padding-top: 1px;line-height: 1.3;padding: 10px 0;}
 .list-head>.list-name>.list-author{margin-top: 20px;display: flex;}
-.list-head>.list-name>.list-author>svg{width: 30px;height: 30px;background: #fff;border-radius: 50%;}
+.list-head>.list-name>.list-author>svg{width: 30px;height: 30px;background: #fff;border-radius: 50%;padding: 3px;}
 .list-head>.list-name>.list-author>span{line-height: 30px;margin-left: 5px;color: hsla(0,0%,100%,.7);font-size: 14px;}
+
+/* summary */
+.list-summary-container{margin: 10px 10px 0px 15px;}
+.list-summary-container>.list-summary-innerContainer{position: relative;padding-bottom: 18px;}
+.list-summary-innerContainer>.list-summary-arrow{position: absolute;}
+.list-summary{display: -webkit-box;-webkit-box-orient: vertical;overflow:hidden;}
+.list-summary.hide{-webkit-line-clamp: 3}
+.list-summary>span{margin-bottom: 26px;}
+.list-summary>span>i{font-style: unset;}
+.list-summary-arrow{right: 0;}
+.list-summary-arrow>svg{display: none;width: 15px;height: 15px;fill: rgb(203,203,203)}
+.list-summary-arrow>svg.active{display: block}
+
+/* songs */
+.list-songs-container{background-color: rgb(249,249,249);}
+.list-songs-container>h3{padding:2px 10px 3px 10px;color: #666;font-size: 12px;background: #eeeff0;}
+.list-songs-container>.list-songs{}
+.list-songs>li{display: flex;}
+.list-songs>li>.list-song-order{width: 10%;max-width: 40px;display: flex;align-items: center;justify-content: center;color: #999;}
+.list-songs>li>.list-song-info{position: relative;width: 100%;border-bottom: 1px solid rgb(243,243,243);padding: 6px 0;}
+.list-songs>li>.list-song-info>h3{font-size: 17px;}
+.list-songs>li>.list-song-info>p{font-size: 12px;color: #888;}
+.list-songs>li>.list-song-info>a{position: absolute;right: 8px;top: 50%;transform: translateY(-50%)}
+.list-songs>li>.list-song-info>a>svg{width: 22px;height: 22px;vertical-align: middle;fill: #AAA;}
+
+
+
+
+
+
+
+/* favorite icon */
+.favoriteIcon-container{margin-top: 54px;}
+.favoriteIcon-innerContainer{position: fixed;bottom: 0;left: 0;width: 100%;padding: 7px 30px 7px 30px;background: #fff;}
+.favorite{background: #d33a31;color: #fff;line-height: 40px;border-radius: 20px;}
+.favorite>p{text-align: center;display: flex;justify-content: center;align-items: center;font-size: 16px;}
+.favorite>p>svg{ width: 25px;height: 25px;fill: #fff;margin-right: 4px;}

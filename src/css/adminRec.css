@@ -1,0 +1,24 @@
+body{background: #f5f7fc;font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;display: flex;height: 100vh;}
+
+#controlPanel {padding: 10px;margin-right: 10px;background: #fff;border-radius: 5px;}
+#controlPanel>h2{}
+#controlPanel>form{display: flex;flex-direction: column;}
+#controlPanel>form>label {padding: 10px;}
+#controlPanel>form>label:last-child{display:flex;justify-content: center;flex-direction: column;}
+#controlPanel>form>label>span {color: #000;}
+#controlPanel>form>label>input[type=text] {border: #4F4F4F solid 1px;padding: 5px;border-radius: 5px;}
+#controlPanel>form>label>input[type=submit] {padding: 5px 20px;align-self: flex-end;background: #C20C0C;color: #fff;outline: none;cursor: pointer;border:#fff solid 1px;margin-bottom: 10px;border-radius: 4px;}
+#controlPanel>form>label:nth-child(5){align-self: flex-start;}
+#controlPanel>form>label>textarea{border: #4F4F4F solid 1px;border-radius: 5px;}
+#controlPanel>form>label>input[type=submit]:hover{background: #fff;color: #C20C0C;border: #C20C0C solid 1px;}
+
+.recSongLists{flex: 1 ;border-radius: 5px;background: #fff;}
+.recSongLists>ul{border-bottom: #f4f4f4 solid 1px;}
+.recSongLists>ul>li{position: relative;padding:10px 4px;display: flex;}
+.recSongLists>ul>li:nth-child(odd){background: #f4f4f4;}
+.recSongLists>ul>li>span{position: absolute;color: #fff;width: 20px;height: 20px;background: #C20C0C;border-radius: 50%;text-align: center;line-height: 16px;margin: 4px 0 0 4px;padding: 2px}
+.recSongLists>ul>li>img{width: 100px;height: 100px;margin-left: 28px;}
+.recSongLists>ul>li>div{margin-left: 10px;}
+.recSongLists>ul>li>div>span{display: block;}
+.recSongLists>ul>li>div>span>a{padding-bottom: 3px;border-bottom: solid #000 1px;display: block;}
+.recSongLists>ul>li>div>p{padding: 5px 0;}

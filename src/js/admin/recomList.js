@@ -15,18 +15,21 @@
             $(this.el).find('ul').empty()
             reclists.map((reclist,key) => {
                 let domSpan1 = $('<span></span>').text(key+1)
-                let a =  $('<a></a>').text(reclist.name).attr('href',`admin.html?id=${reclist.id}`)
+                let a =  $('<a></a>').text(`专辑名称：${reclist.name}`).attr('href',`admin.html?id=${reclist.id}`)
                 let domSpan2 = $('<span></span>').attr('data-reclist-id', reclist.id).append(a)
                 let img = $('<img>').attr('src', reclist.cover)
-                let p =$('<p></p>').text(reclist.summary)
+                let p =$('<p></p>').text(`专辑简介：${reclist.summary}`)
                 let domLi = $('<li></li>')
+                let div = $('<div></div>')
                 if(key%2){
                     domLi.addClass('gray')
                 }
                 domLi.append(domSpan1)
                 domLi.append(img)
-                domLi.append(domSpan2)
-                domLi.append(p)
+                div.append(domSpan2)
+                div.append(p)
+
+                domLi.append(div)
 
                 if(selectedId===reclist.id){
                     this.activeItem(domLi)

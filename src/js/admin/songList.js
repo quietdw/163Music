@@ -44,8 +44,6 @@
         },
         find(listId) {
            if (listId){
-               console.log(listId);
-               
             let recLists = AV.Object.createWithoutData('RecommendedSongsLists', listId);
             let query = new AV.Query('Song');
             query.equalTo('dependent', recLists);
@@ -70,8 +68,6 @@
                 return songs
             });
            }
-
-
         },
 
     }

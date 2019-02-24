@@ -31,13 +31,13 @@ body{position: relative;}
 .list-songs-container{background-color: rgb(249,249,249);}
 .list-songs-container>h3{padding:2px 10px 3px 10px;color: #666;font-size: 12px;background: #eeeff0;}
 .list-songs-container>.list-songs{}
-.list-songs>li{display: flex;}
-.list-songs>li>.list-song-order{width: 10%;max-width: 40px;display: flex;align-items: center;justify-content: center;color: #999;}
-.list-songs>li>.list-song-info{position: relative;width: 100%;border-bottom: 1px solid rgb(243,243,243);padding: 6px 0;}
-.list-songs>li>.list-song-info>h3{font-size: 17px;}
-.list-songs>li>.list-song-info>p{font-size: 12px;color: #888;}
-.list-songs>li>.list-song-info>a{position: absolute;right: 8px;top: 50%;transform: translateY(-50%)}
-.list-songs>li>.list-song-info>a>svg{width: 22px;height: 22px;vertical-align: middle;fill: #AAA;}
+.list-songs>ol>li{display: flex;}
+.list-songs>ol>li>.list-song-order{width: 10%;max-width: 40px;display: flex;align-items: center;justify-content: center;color: #999;}
+.list-songs>ol>li>.list-song-info{position: relative;width: 100%;border-bottom: 1px solid rgb(243,243,243);padding: 6px 0;}
+.list-songs>ol>li>.list-song-info>h3{font-size: 17px;}
+.list-songs>ol>li>.list-song-info>p{font-size: 12px;color: #888;}
+.list-songs>ol>li>.list-song-info>a{position: absolute;right: 8px;top: 50%;transform: translateY(-50%)}
+.list-songs>ol>li>.list-song-info>a>svg{width: 22px;height: 22px;vertical-align: middle;fill: #AAA;}
 
 
 

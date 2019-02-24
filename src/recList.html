@@ -12,129 +12,31 @@
     <div id="recList">
         <section class="list-head-container">
             <div class="list-head-innercontainer">
-                <div class="list-head">
-                    <div class="list-cover"><img src="https://p1.music.126.net/_FCjUngRwE2Jm4w_cmrciQ==/109951163877926335.webp?imageView&thumbnail=378x0&quality=75&tostatic=0&type=webp" alt=""><span>歌单</span></div>
-                    <div class="list-name">
-                        <h2>歌单名字</h2>
-                        <div class="list-author">
-                                <svg class="icon icon-play">
-                                        <use xlink:href="#icon-1"></use>
-                                    </svg>
-                            <span>Jiang</span>
+                    <div class="list-head">
+                            <div class="list-cover"><img src="https://p1.music.126.net/_FCjUngRwE2Jm4w_cmrciQ==/109951163877926335.webp?imageView&thumbnail=378x0&quality=75&tostatic=0&type=webp" alt=""><span>歌单</span></div>
+                            <div class="list-name">
+                                <h2>歌单名字</h2>
+                                <div class="list-author">
+                                        <svg class="icon icon-play">
+                                                <use xlink:href="#icon-1"></use>
+                                            </svg>
+                                    <span>Jiang</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="list-head-background"></div>
+                        <div class="list-head-background"></div>
             </div>
         </section>
         <section class="list-summary-container">
             <div class="list-summary-innerContainer">
-                <div class="list-summary hide">
-                    <span><i>111111111a a a 啊</i><br></span>
-                    <span><i>1</i><br></span>
-                    <span><i></i><br></span>
-                    <span><i></i><br></span>
-                    <span><i>1</i><br></span>
-                    <span><i>1</i><br></span>
-                </div>
-                <div class="list-summary-arrow">
-                    <svg class="icon icon-play active">
-                        <use xlink:href="#icon-down"></use>
-                    </svg>
-                    <svg class="icon icon-play">
-                        <use xlink:href="#icon-up"></use>
-                    </svg>
-                </div>
+                
             </div>
         </section>
         <section class="list-songs-container">
             <h3>歌曲列表</h3>
-            <ol class='list-songs'>
-                <li>
-                    <div class="list-song-order">1</div>
-                    <div class="list-song-info">
-                        <h3>歌名歌名歌名歌名歌名</h3>
-                        <p>歌手</p>
-                        <a href="">
-                            <svg class="icon icon-play">
-                                <use xlink:href="#icon-bofang1"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-song-order">1</div>
-                    <div class="list-song-info">
-                        <h3>歌名</h3>
-                        <p>歌手</p>
-                        <a href="">
-                            <svg class="icon icon-play">
-                                <use xlink:href="#icon-bofang1"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-song-order">1</div>
-                    <div class="list-song-info">
-                        <h3>歌名</h3>
-                        <p>歌手</p>
-                        <a href="">
-                            <svg class="icon icon-play">
-                                <use xlink:href="#icon-bofang1"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-song-order">1</div>
-                    <div class="list-song-info">
-                        <h3>歌名</h3>
-                        <p>歌手</p>
-                        <a href="">
-                            <svg class="icon icon-play">
-                                <use xlink:href="#icon-bofang1"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-song-order">1</div>
-                    <div class="list-song-info">
-                        <h3>歌名</h3>
-                        <p>歌手</p>
-                        <a href="">
-                            <svg class="icon icon-play">
-                                <use xlink:href="#icon-bofang1"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-song-order">1</div>
-                    <div class="list-song-info">
-                        <h3>歌名</h3>
-                        <p>歌手</p>
-                        <a href="">
-                            <svg class="icon icon-play">
-                                <use xlink:href="#icon-bofang1"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-song-order">1</div>
-                    <div class="list-song-info">
-                        <h3>歌名</h3>
-                        <p>歌手</p>
-                        <a href="">
-                            <svg class="icon icon-play">
-                                <use xlink:href="#icon-bofang1"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </li>
-            </ol>
+            <div class="list-songs">
+                
+            </div>
         </section>
         <section class="favoriteIcon-container">
             <div class="favoriteIcon-innerContainer">
@@ -151,6 +53,12 @@
         </section>
     </div>
     <script src="//at.alicdn.com/t/font_1048889_ez0rhtzhwam.js"></script>
-    <script src="js/RecommendedSongsLists/recList.js"></script>
+    <script src="vendors/jquery.min.js"></script>
+    <script src="vendors/av-min.js"></script>
+    <script src="js/initializers/av.js"></script>
+    <script src="js/admin/eventHub.js"></script>
+    <script src="js/RecommendedSongsLists/recList-head.js"></script>
+    <script src="js/RecommendedSongsLists/recList-summary.js"></script>
+    <script src="js/RecommendedSongsLists/recList-songs.js"></script>
 </body>
 </html>

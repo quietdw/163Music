@@ -36,11 +36,6 @@
                 html = html.replace(`__${string}__`, data[string] || '')
             })
             $(this.el).html(html)
-            // if(data.id){
-            //     $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>编辑歌曲</h2>')
-            // }else{
-            //     $(this.el).find('.songDiscriptionSubmitContainer').prepend('<h2>新建歌曲</h2>')
-            // }
         },
         reset(){
             this.render({})

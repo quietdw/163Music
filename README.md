@@ -1,9 +1,15 @@
 # 仿网易云音乐
 
-包含管理界面，运行管理界面前，请先启动本地服务器server.js
+1. 后台有上传歌曲、编辑歌曲功能。
+2. 后台支持歌单创建。
+3. 前端页面灵感来自网易云音乐。
+4. 可在线听歌、查看歌词。且配有播放动画。
 
+用到的技术：
+后台：LeanCloud 数据存储 API、七牛上传接口
+前端：原生 JS、jQuery、CSS 3、iconfont、SVG、AJAX、MVC
+
+
+上传歌曲时需开启 server.js
 node server.js 8888
 
-hs -c-1
-
-127.0.0.1/src/admin.html

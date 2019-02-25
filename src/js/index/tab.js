@@ -7,7 +7,7 @@
         init(view,model){
             this.view = view
             this.model = model
-            this.bindEvents()
+            //this.bindEvents()
         },
         bindEvents(){
             $(this.view.el).on('click','.tabs-nav>li', (e)=>{
